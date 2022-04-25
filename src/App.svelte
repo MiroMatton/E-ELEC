@@ -1,5 +1,5 @@
 <script lang="ts">
-  let name: string = "world";
+  import Portfolio from "./components/Portfolio.svelte";
 </script>
 
 <header>
@@ -77,12 +77,11 @@
     class="bgSlobedUnderline"><polygon points="0,15 200,0 0,0" /></svg
   >
 </div>
+<Portfolio />
 <main />
 
 <style lang="scss">
-  $blue: #6bc9ef;
-  $orange: #ef916b;
-  $lightBlue: #aaddf6;
+  @use "./styles/global";
 
   ul {
     display: flex;
@@ -101,7 +100,7 @@
   }
 
   header {
-    background-color: $orange;
+    background-color: global.$orange;
     color: white;
     display: flex;
     justify-content: flex-end;
@@ -109,7 +108,7 @@
 
   nav {
     color: white;
-    background-color: $blue;
+    background-color: global.$blue;
 
     h2 {
       font-size: 2rem;
@@ -119,7 +118,7 @@
 
   #banner {
     color: white;
-    background-color: $blue;
+    background-color: global.$blue;
     padding: 5rem 0;
 
     h1 {
@@ -127,7 +126,7 @@
     }
 
     button {
-      background: $orange;
+      background: global.$orange;
       padding: 0.25em 0.5rem;
       border-radius: 5px;
       cursor: pointer;
@@ -143,20 +142,12 @@
   }
 
   .bgSlobed {
-    fill: $lightBlue;
+    fill: global.$lightBlue;
   }
 
   .bgSlobedUnderline {
     position: absolute;
     left: 0;
-    fill: $blue;
-  }
-
-  .wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+    fill: global.$blue;
   }
 </style>
