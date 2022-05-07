@@ -1,4 +1,5 @@
 <script lang="ts">
+  import AboutUs from "./components/AboutUs.svelte";
   import Portfolio from "./components/Portfolio.svelte";
 </script>
 
@@ -77,6 +78,7 @@
     class="bgSlobedUnderline"><polygon points="0,15 200,0 0,0" /></svg
   >
 </div>
+<AboutUs />
 <Portfolio />
 <main />
 
@@ -129,11 +131,7 @@
       background: global.$orange;
       padding: 0.25em 0.5rem;
       border-radius: 5px;
-      cursor: pointer;
       margin: 1em 0;
-      text-decoration: none;
-      color: inherit;
-      border: 0;
     }
 
     img {
