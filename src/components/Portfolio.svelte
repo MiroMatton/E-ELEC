@@ -2,19 +2,29 @@
   import { fade } from "svelte/transition";
   const option1 = "huizen";
   const option2 = "bedrijven";
+  let active = { button1: false, button2: false, button3: false };
   let displayOption1;
   let displayOption2;
   const Sort = (sort) => {
     if (sort === "alles") {
       displayOption1 = "";
       displayOption2 = "";
+      active.button2 = false;
+      active.button3 = false;
+      active.button1 = !active.button1;
     }
     if (sort === option1) {
-      displayOption2 = "none";
+      displayOption2 = displayOption2 == "none" ? "" : "none";
       displayOption1 = "";
+      active.button1 = false;
+      active.button3 = false;
+      active.button2 = !active.button2;
     } else if (sort === option2) {
-      displayOption1 = "none";
+      displayOption1 = displayOption1 == "none" ? "" : "none";
       displayOption2 = "";
+      active.button1 = false;
+      active.button2 = false;
+      active.button3 = !active.button3;
     }
   };
 </script>
@@ -24,9 +34,15 @@
     <h2>realisatie</h2>
 
     <div class="nav">
-      <button on:click={() => Sort("alles")}>alles</button>
-      <button on:click={() => Sort(option1)}>huizen</button>
-      <button on:click={() => Sort(option2)}>bedrijven</button>
+      <button class:active={active.button1} id="" on:click={() => Sort("alles")}
+        >alles</button
+      >
+      <button class:active={active.button2} on:click={() => Sort(option1)}
+        >huizen</button
+      >
+      <button class:active={active.button3} on:click={() => Sort(option2)}
+        >bedrijven</button
+      >
     </div>
   </div>
   <div class="grid">
@@ -61,6 +77,10 @@
   @use "../styles/global";
 
   #realisatie {
+    h2 {
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
     background-color: global.$blue;
     color: white;
     padding: 3em;
@@ -69,6 +89,26 @@
   .container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  button {
+    background: white;
+    color: global.$blue;
+    padding: 0.5em 1rem;
+    margin: 1em 0 1em 1em;
+    font-size: 1.5rem;
+
+    &:hover {
+      background-color: global.$orange;
+      color: white;
+    }
+  }
+
+  .active {
+    background-color: global.$orange;
+    color: white;
   }
 
   .grid {
