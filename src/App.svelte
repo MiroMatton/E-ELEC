@@ -1,5 +1,6 @@
 <script lang="ts">
   import AboutUs from "./components/AboutUs.svelte";
+  import Contact from "./components/Contact.svelte";
   import Portfolio from "./components/Portfolio.svelte";
 </script>
 
@@ -80,6 +81,7 @@
 </div>
 <AboutUs />
 <Portfolio />
+<Contact />
 <main />
 
 <style lang="scss">
